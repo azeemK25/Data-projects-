@@ -1,1 +1,221 @@
+-- Data Cleaning Project
+
+SELECT *
+FROM layoffs
+
+-- 1. Remove duplicates
+-- 2. Standardise data
+-- 3. NULL/Blank values 
+-- 4. Remove any unnecessary columns 
+
+-- Created a duplicate table called layoffs staging to keep the original layoffs table raw
+
+
+CREATE TABLE layoffs_staging
+LIKE layoffs
+
+INSERT layoffs_staging
+SELECT *
+FROM layoffs
+
+
+-- 1. REMOVING DUPLICATES --------------------------------------------------------------------------------- 
+
+-- The below adds a row number to each record in the layoffs_staging table, restarting the count for rows that have the same columns, so I can identify duplicates. If it has 2 or above on the row_num, it emans they're duplicates.
+SELECT *,
+ROW_NUMBER() OVER(
+PARTITION BY company, location, industry, total_laid_off, percentage_laid_off, `date`, stage, country, funds_raised_millions) AS row_num
+FROM layoffs_staging
+
+-- Create it as a CTE so I dont have to retype the query
+
+WITH duplicate_cte AS 
+(
+SELECT *,
+ROW_NUMBER() OVER(
+PARTITION BY company, location, industry, total_laid_off, percentage_laid_off, `date`, stage, country, funds_raised_millions) AS row_num
+FROM layoffs_staging
+)
+
+-- Row number greater than 1 will show the duplicates 
+
+SELECT *
+FROM duplicate_cte
+WHERE row_num > 1
+
+-- Checking for dupes where the company is casper as this is the top result of 5 that show row_number as 2. So the below is to double check if it is a duplicate. 
+
+SELECT *
+FROM layoffs_staging
+WHERE company = 'Casper';
+
+
+-- I want to remove the duplicate without removing the other Casper results. I will create a table with a new column and add those row numbers in. Then delete where row numbers are over 2, thus deleting the duplicates 
+
+CREATE TABLE `layoffs_staging2` (
+  `company` TEXT,
+  `location` TEXT,
+  `industry` TEXT,
+  `total_laid_off` INT DEFAULT NULL,
+  `percentage_laid_off` TEXT,
+  `date` TEXT,
+  `stage` TEXT,
+  `country` TEXT,
+  `funds_raised_millions` INT DEFAULT NULL,
+  `row_num` INT
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- The below is to test if it works and it does however only the column names appear, with no data in them
+
+SELECT *
+FROM layoffs_staging2
+WHERE row_num > 1;
+
+-- The below adds the data to the layoffs 2 table including the partition by query
+
+INSERT INTO layoffs_staging2
+SELECT *,
+ROW_NUMBER() OVER(
+PARTITION BY company, location, industry, total_laid_off, percentage_laid_off, `date`, stage, country, funds_raised_millions) AS row_num
+FROM layoffs_staging;
+
+-- Now I will delet the duplicates in the new table 
+
+DELETE 
+FROM layoffs_staging2
+WHERE row_num > 1;
+
+-- Re-ran the below which now shows empty rows meaning, the duplicates were removed. 
+
+SELECT *
+FROM layoffs_staging2
+WHERE row_num > 1;
+
+-- 2. STANDARDIZING DATA --------------------------------------------------------------
+
+-- This is finding issues in the data and fixing it 
+
+SELECT *
+FROM layoffs_staging2;
+
+-- TRIM takes the white space out of the start of the row data
+
+SELECT company, TRIM(company)
+FROM layoffs_staging2;
+
+-- I will now update the 'company' column and have it trimmed so there are no white spaces at the start 
+
+UPDATE layoffs_staging2
+SET company = TRIM(company); 
+
+-- Now I will look at industry. The below brings up distinct values so can help look for inconsistencies. It found 3 values: Crypto, CryptoCurrency and Crypto Currency. These 3 need to be just 'Crypto. 
+
+SELECT DISTINCT *
+FROM layoffs_staging2
+WHERE industry LIKE 'Crypto%';
+
+-- The below will update the table to change the rows to only have 'Crypto' 
+
+UPDATE layoffs_staging2
+SET industry = 'Crypto'
+WHERE industry LIKE 'Crypto%';
+
+-- Location column was fine. Country column had 1 error. There was 2 United states columns, one had a '.' at the end of it. 
+
+SELECT DISTINCT country
+FROM layoffs_staging2
+ORDER BY 1;
+
+-- Removing the '.' at the end
+
+SELECT DISTINCT country, TRIM(TRAILING '.' FROM country)
+FROM layoffs_staging2
+WHERE country LIKE 'United States%';
+
+UPDATE layoffs_staging2
+SET country = TRIM(TRAILING '.' FROM country)
+WHERE country LIKE 'United States%';
+
+-- Changing the 'date' column to a date column from being a text column. 
+
+SELECT `date`,
+str_to_date(`date`, '%m/%d/%Y')
+FROM layoffs_staging2;
+
+UPDATE layoffs_staging2
+SET `date` = str_to_date(`date`, '%m/%d/%Y');
+
+ALTER TABLE layoffs_staging2
+MODIFY COLUMN `date` DATE;
+
+SELECT *
+FROM layoffs_staging2;
+
+-- 3. REMOVING NULL AND BLANK VALUES --------------------------------------------------------------
+
+-- The below checks NULL values in 2 columns 
+
+SELECT*
+FROM layoffs_staging2
+WHERE total_laid_off IS NULL
+AND percentage_laid_off IS NULL;
+
+-- The below is checking for blank values and null values
+
+SELECT *
+FROM layoffs_staging2
+WHERE industry IS NULL 
+OR industry = '';
+
+-- The below is an exampme of a company with a blank value
+
+SELECT *
+FROM layoffs_staging2
+WHERE company = 'Airbnb';
+
+-- This self join highlights rows where the industry value is missing but can be filled using another row with the same company and location.
+
+SELECT *
+FROM layoffs_staging2 t1
+JOIN layoffs_staging2 t2
+ON t1.company = t2.company
+AND t1.location = t2.location
+WHERE (t1. industry IS NULL OR t1.industry = '')
+AND t2.industry IS NOT NULL;
+
+-- The above didnt work so I will update the blank values to be NULL instead and try again
+
+UPDATE layoffs_staging2 
+SET industry = NULL 
+WHERE industry ='';
+
+-- This update uses a self-join to fill missing industry values by copying the correct industry from another row with the same company and location.
+
+UPDATE layoffs_staging2 t1
+JOIN layoffs_staging2 t2
+ON t1.company = t2.company
+SET t1.industry = t2.industry
+WHERE t1.industry IS NULL
+AND t2.industry IS NOT NULL;
+
+-- I'll now select everything to check for any other blank/null values
+
+SELECT *
+FROM layoffs_staging2;
+
+-- The below are all null. I will delete them. 
+
+DELETE
+FROM layoffs_staging2
+WHERE total_laid_off IS NULL
+AND percentage_laid_off IS NULL;
+
+-- I will also remove this column
+
+ALTER TABLE layoffs_staging2
+DROP row_num;  
+
+
+
+
 
