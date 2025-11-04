@@ -21,4 +21,4 @@ This repository showcases practical projects I’ve completed while building my 
 ✅ More projects coming soon!
 
 If you’d like to connect or see more of my learning journey:
-📌 www.linkedin.com/in/azeemK25 (update link to yours)
+📌 www.linkedin.com/in/azeemK25 
