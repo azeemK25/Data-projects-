@@ -16,6 +16,14 @@ This repository showcases practical projects I’ve completed while building my 
 
 > Clean data = better insights. This project focuses on transforming raw data into accurate, usable information for analysis.
 
+### 2️⃣ SQL Exploratory Data Analysis — Global Layoffs Insights
+
+🔹 Tool: MySQL
+🔹 Skills: Aggregations, Window Functions, CTEs, Date Formatting, Data Storytelling
+🔹 Focus: Identifying layoff trends by company, industry, country, funding & time
+🔹 Project Folder: 📂 Data Cleaning Portfolio Project (same folder as cleaning — EDA included)
+
+> Insightful analysis = stronger decisions. This project uses SQL to uncover meaningful patterns and business insights from global layoffs data.
 ---
 
 ✅ More projects coming soon!
