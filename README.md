@@ -12,7 +12,7 @@ This repository showcases practical projects I’ve completed while building my 
 🔹 Tool: MySQL  
 🔹 Skills: Removing duplicates, handling NULL values, standardising data, schema cleanup  
 🔹 Dataset: Layoffs dataset from Kaggle  
-🔹 Project Folder: [Data Cleaning Portfolio Project](./Data%20Cleaning%20Portfolio%20Project)
+🔹 Project Folder: [Data Cleaning Portfolio Project](./Portfolio%20Project%20-%20Data%20Cleaning)
 
 > Clean data = better insights. This project focuses on transforming raw data into accurate, usable information for analysis.
 
