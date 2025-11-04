@@ -18,10 +18,10 @@ This repository showcases practical projects I’ve completed while building my 
 
 ### 2️⃣ SQL Exploratory Data Analysis — Global Layoffs Insights
 
-🔹 Tool: MySQL
-🔹 Skills: Aggregations, Window Functions, CTEs, Date Formatting, Data Storytelling
-🔹 Focus: Identifying layoff trends by company, industry, country, funding & time
-🔹 Project Folder: [Exploratory Data Analysis Portfolio Project](./Portfolio%20Project%20-%20Exploratory%20Data%20Analysis).
+🔹 Tool: MySQL  
+🔹 Skills: Aggregations, Window Functions, CTEs, Date Formatting, Data Storytelling  
+🔹 Focus: Identifying layoff trends by company, industry, country, funding & time  
+🔹 Project Folder: [Exploratory Data Analysis Portfolio Project](./Portfolio%20Project%20-%20Exploratory%20Data%20Analysis)
 
 > Insightful analysis = stronger decisions. This project uses SQL to uncover meaningful patterns and business insights from global layoffs data.
 ---
