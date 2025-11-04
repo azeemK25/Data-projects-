@@ -1,1 +1,80 @@
+-- Exploratory Data Analysis 
 
+SELECT *
+FROM layoffs_staging2;
+
+-- Overview stats 
+
+-- Total rows
+
+SELECT COUNT(*) AS total_rows FROM layoffs_staging2;
+
+-- Total comnapnies
+
+SELECT COUNT(DISTINCT company) AS unique_companies FROM layoffs_staging2;
+
+-- First and last date which shows the timeframe of this data 
+
+SELECT MIN(date), MAX(date) FROM layoffs_staging2;
+
+-- Which companies laid off the most employees
+
+SELECT company, SUM(total_laid_off) AS total_laid_off
+FROM layoffs_staging2
+GROUP BY company
+ORDER BY total_laid_off DESC
+LIMIT 10;
+
+-- Which industries were hit hardest
+
+SELECT industry, SUM(total_laid_off) AS total_laid_off
+FROM layoffs_staging2
+GROUP BY industry
+ORDER BY total_laid_off DESC; 
+
+-- Country insights 
+
+SELECT country, SUM(total_laid_off) AS total_laid_off
+FROM layoffs_staging2
+GROUP BY country
+ORDER BY total_laid_off DESC;
+
+-- Percentage laid off showing who suffered the most.
+
+SELECT company, industry, MAX(percentage_laid_off) AS max_percentage
+FROM layoffs_staging2
+WHERE percentage_laid_off IS NOT NULL
+GROUP BY company, industry
+ORDER BY max_percentage DESC
+LIMIT 10;
+
+-- Funding vs Layoffs
+
+SELECT company, SUM(funds_raised_millions) AS funds,
+       SUM(total_laid_off) AS laid_off
+FROM layoffs_staging2
+GROUP BY company
+HAVING funds > 0
+ORDER BY laid_off DESC;
+
+-- Stage of company vs layoffs
+
+SELECT stage, SUM(total_laid_off) AS total_laid_off
+FROM layoffs_staging2
+GROUP BY stage
+ORDER BY total_laid_off DESC;
+
+-- Comparing layoffs in 2022 and 2023
+
+WITH layoffs_by_year AS (
+    SELECT industry,
+           YEAR(date) AS yr,
+           SUM(total_laid_off) AS total_laid
+    FROM layoffs_staging2
+    GROUP BY industry, yr
+)
+SELECT industry,
+       SUM(CASE WHEN yr = 2022 THEN total_laid END) AS layoffs_2022,
+       SUM(CASE WHEN yr = 2023 THEN total_laid END) AS layoffs_2023
+FROM layoffs_by_year
+GROUP BY industry;
