@@ -21,7 +21,7 @@ This repository showcases practical projects I’ve completed while building my 
 🔹 Tool: MySQL
 🔹 Skills: Aggregations, Window Functions, CTEs, Date Formatting, Data Storytelling
 🔹 Focus: Identifying layoff trends by company, industry, country, funding & time
-🔹 Project Folder: 📂 Data Cleaning Portfolio Project (same folder as cleaning — EDA included)
+🔹 Project Folder: [Exploratory Data Analysis Portfolio Project](./Portfolio%20Project%20-%20Exploratory%20Data%20Analysis).
 
 > Insightful analysis = stronger decisions. This project uses SQL to uncover meaningful patterns and business insights from global layoffs data.
 ---
