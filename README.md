@@ -24,6 +24,15 @@ This repository showcases practical projects I’ve completed while building my 
 🔹 Project Folder: [Exploratory Data Analysis Portfolio Project](./Portfolio%20Project%20-%20Exploratory%20Data%20Analysis)
 
 > Insightful analysis = stronger decisions. This project uses SQL to uncover meaningful patterns and business insights from global layoffs data.
+>
+> ### 3️⃣ Excel Dashboard — Global Freelancers Analysis
+
+🔹Tool: Excel
+🔹Skills: Data Cleaning, Pivot Tables, Slicers, Charts, Dashboard Design
+🔹Focus: Analysing freelance market trends (rates, demand, satisfaction)
+🔹Project Folder: Excel Dashboard Portfolio Project
+🔹Structured analysis using Excel to explore global trends. Insights were self-generated, focusing on hourly rates, freelancer distribution and skill performance.
+
 ---
 
 ✅ More projects coming soon!
