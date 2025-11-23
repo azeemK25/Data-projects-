@@ -33,7 +33,7 @@ This repository showcases practical projects I’ve completed while building my 
 
 Files:
 
-- 📥 Raw Data ./Portfolio%20Project%20-%20Excel%20Dashboard/Raw%20data.jpg
+- ./Portfolio%20Project%20-%20Excel%20Dashboard/Raw%20data.jpg
 - 🧹 Cleaned Data ./Portfolio%20Project%20-%20Excel%20Dashboard/Cleaned%20data%20.jpg
 - 📊 Dashboard ./Portfolio%20Project%20-%20Excel%20Dashboard/Dashboard.jpg
 - 
