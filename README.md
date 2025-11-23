@@ -27,12 +27,18 @@ This repository showcases practical projects I’ve completed while building my 
 >
 > ### 3️⃣ Excel Dashboard — Global Freelancers Analysis
 
-🔹Tool: Excel
-🔹Skills: Data Cleaning, Pivot Tables, Slicers, Charts, Dashboard Design
-🔹Focus: Analysing freelance market trends (rates, demand, satisfaction)
-🔹Project Folder: Excel Dashboard Portfolio Project
-🔹Structured analysis using Excel to explore global trends. Insights were self-generated, focusing on hourly rates, freelancer distribution and skill performance.
+Tool: Excel
+Skills: Data Cleaning, Pivot Tables, Slicers, Charts, Dashboard Creation
+Focus: Analysing freelance market trends (rates, demand, satisfaction)
 
+Files:
+
+📥 Raw Data
+🧹 Cleaned Data
+📊 Dashboard
+
+Project Folder: Excel Dashboard Portfolio Project
+Structured analysis using Excel to explore global freelance market trends. Insights were independently generated, focusing on hourly rates, freelancer distribution and skill performance.
 ---
 
 ✅ More projects coming soon!
