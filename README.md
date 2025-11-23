@@ -25,7 +25,7 @@ This repository showcases practical projects I’ve completed while building my 
 
 > Insightful analysis = stronger decisions. This project uses SQL to uncover meaningful patterns and business insights from global layoffs data.
 >
-> ### 3️⃣ Excel Dashboard — Global Freelancers Analysis
+ ### 3️⃣ Excel Dashboard — Global Freelancers Analysis
 
 🔹 **Tool:** Excel  
 🔹 **Skills:** Data Cleaning, Pivot Tables, Slicers, Charts, Dashboard Creation  
