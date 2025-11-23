@@ -37,9 +37,7 @@ Files:
 - 🧹 **[Cleaned Data](./Portfolio%20Project%20-%20Excel%20Dashboard/Cleaned%20data%20.jpg)**
 - 📊 **[Dashboard](./Portfolio%20Project%20-%20Excel%20Dashboard/Dashboard.jpg)**
 
-  
-Project Folder: Excel Dashboard Portfolio Project
-Structured analysis using Excel to explore global freelance market trends. Insights were independently generated, focusing on hourly rates, freelancer distribution and skill performance.
+> Structured analysis using Excel to explore global freelance market trends. Insights were independently generated, focusing on hourly rates, freelancer distribution and skill performance.
 
 
 ✅ More projects coming soon!
