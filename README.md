@@ -48,7 +48,6 @@ Files:
 Files:
 
 - 📄 **Raw Data**
-- 🧹 **Transformed Data (Power Query)**
 - 📊 **Dashboard**
 
 > Insightful analysis supports better decision-making. This project uses Power BI to analyse customer churn behaviour, calculate churn rates and key KPIs, and present insights through an interactive dashboard designed for business stakeholders.
