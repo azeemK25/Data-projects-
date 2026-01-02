@@ -47,8 +47,8 @@ Files:
 
 Files:
 
-- 📄 **Raw Data**
-- 📊 **Dashboard**
+- 📄 **[Raw Data](./WA_Fn-UseC_-Telco-Customer-Churn.xlsx)**
+- 📊 **[Dashboard (PDF)](./Power%20BI%20Project%20Dashboard.pdf)**
 
 > Insightful analysis supports better decision-making. This project uses Power BI to analyse customer churn behaviour, calculate churn rates and key KPIs, and present insights through an interactive dashboard designed for business stakeholders.
 
