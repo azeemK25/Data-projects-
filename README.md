@@ -39,6 +39,19 @@ Files:
 
 > Structured analysis using Excel to explore global freelance market trends. Insights were independently generated, focusing on hourly rates, freelancer distribution and skill performance.
 
+### 4️⃣ Power BI Dashboard — Telco Customer Churn Analysis
+
+- **Tool:** Power BI  
+- **Skills:** Power Query (ETL), Data Modelling, DAX Measures, KPI Design, Interactive Dashboards  
+- **Focus:** Analysing customer churn patterns by tenure, contract type, services, and payment methods  
+
+Files:
+
+- 📄 **Raw Data**
+- 🧹 **Transformed Data (Power Query)**
+- 📊 **Dashboard**
+
+> Insightful analysis supports better decision-making. This project uses Power BI to analyse customer churn behaviour, calculate churn rates and key KPIs, and present insights through an interactive dashboard designed for business stakeholders.
 
 ✅ More projects coming soon!
 
